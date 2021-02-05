@@ -1,4 +1,3 @@
-import json
 import pandas
 
 
@@ -13,7 +12,7 @@ class Items:
         print(self.item_names)
 
     def update_data(self):
-        self.data = pandas.read_csv('data.csv')
+        self.data = pandas.read_csv('data.csv', index_col=0)
         print('Updated\n')
 
     def save_data(self):

@@ -7,12 +7,13 @@ from items import Items
 
 
 class MainFrame(wx.Frame):
-    def __init__(self):
+    def __init__(self, hash_lang):
         style = (wx.STAY_ON_TOP | wx.FRAME_NO_TASKBAR | wx.SIMPLE_BORDER)
         super().__init__(None, title='TMH database builder', size=(300, 54), style=style)
         self.panel = wx.Panel(self)
         self.SetTransparent(220)
         self.SetBackgroundColour("black")
+        self.hash_lang = hash_lang
 
         self.previous_item_hash = None
         self.items = Items()
@@ -68,9 +69,9 @@ class MainFrame(wx.Frame):
         self.Layout()
 
     def update_ui(self):
-        if self.items.data.at[self.current_item_position, 'Hash EN'] == 'No hash':
+        if self.items.data.at[self.current_item_position, f'Hash {self.hash_lang}'] == 'No hash':
             self.name_text.SetForegroundColour((255, 160, 170))
-        elif self.items.data.at[self.current_item_position, 'Hash EN'] != 'None':
+        elif self.items.data.at[self.current_item_position, f'Hash {self.hash_lang}'] != 'None':
             self.name_text.SetForegroundColour((160, 255, 170))
         else:
             self.name_text.SetForegroundColour((160, 160, 170))
@@ -78,7 +79,7 @@ class MainFrame(wx.Frame):
         if self.item_hash:
             self.hash_text.SetForegroundColour((160, 160, 170))
             self.hash_text.SetLabel(self.item_hash)
-            if self.item_hash == self.items.data.at[self.current_item_position, 'Hash EN'] and 'None' != self.items.data.at[self.current_item_position, 'Hash EN']:
+            if self.item_hash == self.items.data.at[self.current_item_position, f'Hash {self.hash_lang}'] and 'None' != self.items.data.at[self.current_item_position, f'Hash {self.hash_lang}']:
                 self.hash_text.SetForegroundColour((160, 255, 170))
                 self.hash_text.SetLabel(self.item_hash)
         else:
@@ -106,12 +107,12 @@ class MainFrame(wx.Frame):
 
     def set_hash_to_item(self):
         if self.item_hash:
-            self.items.data.at[self.current_item_position, 'Hash EN'] = self.item_hash
+            self.items.data.at[self.current_item_position, f'Hash {self.hash_lang}'] = self.item_hash
             self.hash_text.SetLabel('')
             self.name_text.SetLabel('')
 
     def set_no_hash_to_item(self):
-        self.items.data.at[self.current_item_position, 'Hash EN'] = 'No hash'
+        self.items.data.at[self.current_item_position, f'Hash {self.hash_lang}'] = 'No hash'
         self.hash_text.SetLabel('')
         self.name_text.SetLabel('')
         self.update_ui()
@@ -121,7 +122,7 @@ class MainFrame(wx.Frame):
 
     def search_first_no_hash_item(self):
         for item_pos in range(self.items_names_len):
-            if self.items.data.at[item_pos, 'Hash EN'] == 'None':
+            if self.items.data.at[item_pos, f'Hash {self.hash_lang}'] == 'None':
                 self.current_item_position = item_pos
                 break
         self.hash_text.SetLabel('')
@@ -129,7 +130,7 @@ class MainFrame(wx.Frame):
 
     def search_last_no_hash_item(self):
         for item_pos in reversed(range(self.items_names_len)):
-            if self.items.data.at[item_pos, 'Hash EN'] == 'None':
+            if self.items.data.at[item_pos, f'Hash {self.hash_lang}'] == 'None':
                 self.current_item_position = item_pos
                 break
         self.hash_text.SetLabel('')
