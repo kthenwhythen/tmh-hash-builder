@@ -53,6 +53,9 @@ def auto_hash_builder():
 app = App()
 main_frame = MainFrame()
 
+# Options
+hash_lang = 'EN'
+
 # Listener
 keyboard.add_hotkey('F1', lambda: main_frame.prev_item())
 keyboard.add_hotkey('F2', lambda: main_frame.next_item())
