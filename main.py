@@ -54,7 +54,8 @@ app = App()
 main_frame = MainFrame()
 
 # Options
-hash_lang = 'EN'
+hash_lang = 'EN'  # Available choices: 'EN', 'RU'
+temp_value = 'lol'
 
 # Listener
 keyboard.add_hotkey('F1', lambda: main_frame.prev_item())
