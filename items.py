@@ -9,7 +9,6 @@ class Items:
         self.item_names = []
         for name in self.data['Name'].to_list():
             self.item_names.append(name)
-        print(self.item_names)
 
     def update_data(self):
         self.data = pandas.read_csv('data.csv', index_col=0)
