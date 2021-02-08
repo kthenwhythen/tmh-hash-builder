@@ -16,7 +16,7 @@ class MainFrame(wx.Frame):
         self.hash_lang = hash_lang
 
         self.previous_item_hash = None
-        self.items = Items()
+        self.items = Items(self.hash_lang)
         # self.item = pandas.DataFrame()
         # self.item_state = "No item"
         self.item_hash = ""
@@ -103,7 +103,7 @@ class MainFrame(wx.Frame):
             self.update_ui()
 
     def item_name(self):
-        return self.items.item_names[self.current_item_position]
+        return self.items.item_names_local[self.current_item_position]
 
     def set_hash_to_item(self):
         if self.item_hash:

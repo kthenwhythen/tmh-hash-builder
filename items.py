@@ -2,11 +2,12 @@ import pandas
 
 
 class Items:
-    def __init__(self):
+    def __init__(self, localization):
         self.parser_data = None
         self.data = pandas.DataFrame()
         self.update_data()
         self.item_names = []
+        self.item_names_local = pandas.read_json(f'item_names_{localization}.json')
         for name in self.data['Name'].to_list():
             self.item_names.append(name)
 
