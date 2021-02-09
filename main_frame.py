@@ -22,7 +22,7 @@ class MainFrame(wx.Frame):
         self.item_hash = ""
 
         self.current_item_position = 0
-        self.items_names_len = len(self.items.item_names)
+        self.items_names_len = len(self.items.items_names)
 
         self.name_text = wx.StaticText(self.panel, label="")
         self.hash_text = wx.StaticText(self.panel, label="")
@@ -75,7 +75,7 @@ class MainFrame(wx.Frame):
             self.name_text.SetForegroundColour((160, 255, 170))
         else:
             self.name_text.SetForegroundColour((160, 160, 170))
-        self.name_text.SetLabel(self.items.item_names[self.current_item_position])
+        self.name_text.SetLabel(self.items.items_names[self.current_item_position])
         if self.item_hash:
             self.hash_text.SetForegroundColour((160, 160, 170))
             self.hash_text.SetLabel(self.item_hash)
@@ -103,7 +103,7 @@ class MainFrame(wx.Frame):
             self.update_ui()
 
     def item_name(self):
-        return self.items.item_names_local[self.current_item_position]
+        return self.items.items_names_local[self.current_item_position]
 
     def set_hash_to_item(self):
         if self.item_hash:

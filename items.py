@@ -6,10 +6,10 @@ class Items:
         self.parser_data = None
         self.data = pandas.DataFrame()
         self.update_data()
-        self.item_names = []
-        self.item_names_local = pandas.read_json(f'item_names_{localization}.json')
+        self.items_names = []
+        self.items_names_local = pandas.read_json(f'items_names_{localization}.json')
         for name in self.data['Name'].to_list():
-            self.item_names.append(name)
+            self.items_names.append(name)
 
     def update_data(self):
         self.data = pandas.read_csv('data.csv', index_col=0)
