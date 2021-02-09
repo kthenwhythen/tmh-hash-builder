@@ -4,7 +4,7 @@ import keyboard
 
 
 # Options
-hash_lang = 'EN'  # Available choices: 'EN', 'RU'
+hash_lang = 'RU'  # Available choices: 'EN', 'RU'
 
 
 # App initialization

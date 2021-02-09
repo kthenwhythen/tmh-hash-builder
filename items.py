@@ -7,7 +7,7 @@ class Items:
         self.data = pandas.DataFrame()
         self.update_data()
         self.items_names = []
-        self.items_names_local = pandas.read_json(f'items_names_{localization}.json')
+        self.items_names_local = pandas.read_json(f'items_names_{localization}.json').squeeze().to_list()
         for name in self.data['Name'].to_list():
             self.items_names.append(name)
 
